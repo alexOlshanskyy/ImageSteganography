@@ -138,6 +138,9 @@ public class Main {
         while (true) {
             System.out.println("Enter output file name");
             String fileName = userInput.nextLine();
+            if (fileName.equals("q")) {
+                return false;
+            }
             if (!fileName.equals("")){
                 break;
             }
