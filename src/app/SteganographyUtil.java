@@ -16,26 +16,25 @@ public class SteganographyUtil {
     private static int bits;
 
     /*
-      ###################################################################################
-      # Message Header format                                                           #
-      #  ____________________________________________________________________________   #
-      # |                               |                                   |        |  #
-      # | num bits in the message (int) | num bits encoded (1,2,4,8) (byte) | Message|  #
-      # |_______________________________|___________________________________|________|  #
-      ###################################################################################
+      ###############################################
+      # Message Header format                       #
+      #  _________________________________________  #
+      # |                               |        |  #
+      # | num bits in the message (int) | Message|  #
+      # |_______________________________|________|  #
+      ###############################################
       */
 
     public static boolean encrypt(BufferedImage image, byte[] message, int bits) {
         SteganographyUtil.image = image;
         SteganographyUtil.bits = bits;
-        byte[] finalMessage = new byte[message.length+5];
+        byte[] finalMessage = new byte[message.length+4];
         finalMessage[0] = (byte)(message.length>>24 & MASKS[3]);
         finalMessage[1] = (byte)(message.length>>16 & MASKS[3]);
         finalMessage[2] = (byte)(message.length>>8 & MASKS[3]);
         finalMessage[3] = (byte)(message.length & MASKS[3]);
-        finalMessage[4] = (byte) bits;
-        for (int i = 5; i < finalMessage.length; i++) {
-            finalMessage[i] = message[i-5];
+        for (int i = 4; i < finalMessage.length; i++) {
+            finalMessage[i] = message[i-4];
         }
         encryptImage((byte)bits, finalMessage);
         File outfile = new File("saved.png");
