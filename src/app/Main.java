@@ -76,7 +76,7 @@ public class Main {
                 System.out.println("Failed to load image");
                 continue;
             }
-            if (image.getHeight() < 100 || image.getWidth() < 100) {
+            if (image.getHeight() < 10 || image.getWidth() < 10) {
                 System.out.println("Minimum size of the image is 100 x 100");
                 continue;
             }
@@ -84,7 +84,7 @@ public class Main {
             break;
         }
         while (true) {
-            System.out.println("Selects number of bits per byte to encode (1,2,3,4,5,6,7,8):");
+            System.out.println("Selects number of bits per byte to encode (1,2,4,8):");
             String numBits = userInput.nextLine();
             if (numBits.equals("q")) {
                 return false;
