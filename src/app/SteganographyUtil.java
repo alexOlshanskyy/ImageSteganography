@@ -50,7 +50,7 @@ public class SteganographyUtil {
         System.out.println("This is the length: " + message.length);
         System.out.println("This is array: " + Arrays.toString(message));
         boolean done = false;
-        int x = 0;
+        int x = 1;
         int y = 0;
         int remainingP = 3;
         int remainingM = 8/bits;
@@ -64,7 +64,14 @@ public class SteganographyUtil {
         } else if (bits == 8) {
             index = 3;
         }
-        byte mask = (byte)MASKS[index];
+
+        byte mask = MASKS[index];
+        int firstPixel = image.getRGB(0,0);
+        System.out.println("First Before: " + firstPixel);
+        firstPixel = (firstPixel & (~(MASKS_CLEAR[1])));
+        firstPixel |= index;
+        image.setRGB(0,0, firstPixel);
+        System.out.println("First After: " + firstPixel);
 
         int i = 0;
         byte b = message[i];
