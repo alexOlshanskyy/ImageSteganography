@@ -57,17 +57,18 @@ public class Main {
         int imageCapacity;
         double kb;
         double mb;
+        String fileName;
 
         while (true) {
             System.out.println("Enter path to png/PNG image at least 100x100 to encrypt or q to quit:");
             String fileLocation = userInput.nextLine();
+            if (fileLocation.equals("q")) {
+                return false;
+            }
             if (!fileLocation.endsWith(".png")
             && !fileLocation.endsWith(".PNG")) {
                 System.out.println("Please select a .png or .PNG file");
                 continue;
-            }
-            if (fileLocation.equals("q")) {
-                return false;
             }
             File file = new File(fileLocation);
             try {
@@ -137,7 +138,7 @@ public class Main {
 
         while (true) {
             System.out.println("Enter output file name");
-            String fileName = userInput.nextLine();
+            fileName = userInput.nextLine();
             if (fileName.equals("q")) {
                 return false;
             }
@@ -146,7 +147,7 @@ public class Main {
             }
         }
         System.out.println("Starting encryption");
-        if (SteganographyUtil.encrypt(image, messageFile, nBits)) {
+        if (SteganographyUtil.encrypt(image, messageFile, nBits, fileName)) {
             System.out.println("Finished encryption");
             return true;
         } else {
@@ -155,7 +156,49 @@ public class Main {
     }
 
     private static boolean decrypt() {
-        System.out.println("Enter path to PNG file to decrypt:");
-        return true;
+        BufferedImage image;
+        String fileName;
+        while (true) {
+
+            System.out.println("Enter path to png/PNG image to decrypt:");
+            String file = userInput.nextLine();
+            if (file.equals("q")) {
+                return false;
+            }
+            if (!file.endsWith(".png")
+                    && !file.endsWith(".PNG")) {
+                System.out.println("Please select a .png or .PNG file");
+                continue;
+            }
+
+            File f = new File(file);
+            try {
+                image = ImageIO.read(f);
+            } catch (IOException e) {
+                System.out.println("Failed to load image to decrypt");
+                continue;
+            }
+            System.out.println("Image Loaded!");
+            break;
+        }
+
+        while (true) {
+            System.out.println("Enter output file name");
+            fileName = userInput.nextLine();
+            if (fileName.equals("q")) {
+                return false;
+            }
+            if (!fileName.equals("")){
+                break;
+            }
+        }
+
+        System.out.println("Starting decryption");
+        if (SteganographyUtil.decrypt(image, fileName)) {
+            System.out.println("Finished decryption");
+            return true;
+        } else {
+            return false;
+        }
     }
 }
