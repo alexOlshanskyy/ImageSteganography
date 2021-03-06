@@ -73,11 +73,12 @@ public class SteganographyUtil {
         int remainingP = 3;
         int remainingM = 8/bits;
         int pixel = image.getRGB(x,y);
+        System.out.println("Pixel: " + pixel);
         int messageSize = 0;
         while (true) {
             byte val = (byte)((pixel >> ((remainingP - 1) *8))&MASKS_CLEAR[index]);
-            messageSize = (messageSize | val);
-            //temp = (byte)(temp & MASKS_CLEAR[index]);
+            System.out.println("Val: " + val);
+            messageSize = (messageSize | ((int)val&MASKS_CLEAR[index])); // have to clean again 8 bit edge case
             remainingP--;
             if (i+bits == 32){
                 break;
