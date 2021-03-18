@@ -20,8 +20,6 @@ public class Main {
 
         System.out.println("Welcome To Image Steganography!");
         System.out.println("To quit enter q");
-        System.out.println("To encrypt enter e");
-        System.out.println("To decrypt enter d");
 
         while(true) {
             System.out.println("To encrypt enter e");
@@ -77,7 +75,7 @@ public class Main {
                 System.out.println("Failed to load image");
                 continue;
             }
-            if (image.getHeight() < 10 || image.getWidth() < 10) {
+            if (image.getHeight() < 100 || image.getWidth() < 100) {
                 System.out.println("Minimum size of the image is 100 x 100");
                 continue;
             }
@@ -86,12 +84,17 @@ public class Main {
         }
         while (true) {
             System.out.println("Selects number of bits per byte to encode (1,2,4,8):");
+
             String numBits = userInput.nextLine();
             if (numBits.equals("q")) {
                 return false;
             }
             try {
                 nBits = Integer.parseInt(numBits);
+                if(nBits != 1 && nBits != 2 && nBits != 4 && nBits != 8) {
+                    System.out.println("Invalid input");
+                    continue;
+                }
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input");
                 continue;

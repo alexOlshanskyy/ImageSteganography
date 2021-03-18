@@ -20,7 +20,8 @@ public class SteganographyUtil {
 
     /*
       ###############################################
-      # Message Header format                       #
+      # Message Header format: First pixel has the  #
+      # information about num bits encoded          #
       #  _________________________________________  #
       # |                               |        |  #
       # | num bits in the message (int) | Message|  #
@@ -39,7 +40,7 @@ public class SteganographyUtil {
         for (int i = 4; i < finalMessage.length; i++) {
             finalMessage[i] = message[i-4];
         }
-        System.out.println("Final Messsage: " + Arrays.toString(finalMessage));
+        //System.out.println("Final Messsage: " + Arrays.toString(finalMessage));
         encryptImage((byte)bits, finalMessage);
         File outfile = new File(filename);
         try {
@@ -73,11 +74,11 @@ public class SteganographyUtil {
         int remainingP = 3;
         int remainingM = 8/bits;
         int pixel = image.getRGB(x,y);
-        System.out.println("Pixel: " + pixel);
+        //System.out.println("Pixel: " + pixel);
         int messageSize = 0;
         while (true) {
             byte val = (byte)((pixel >> ((remainingP - 1) *8))&MASKS_CLEAR[index]);
-            System.out.println("Val: " + val);
+            //System.out.println("Val: " + val);
             messageSize = (messageSize | ((int)val&MASKS_CLEAR[index])); // have to clean again 8 bit edge case
             remainingP--;
             if (i+bits == 32){
@@ -97,7 +98,7 @@ public class SteganographyUtil {
                 remainingP = 3;
             }
         }
-        System.out.println("This is message size: " + messageSize);
+        //System.out.println("This is message size: " + messageSize);
         res = new byte[messageSize];
         int resI = 0;
         byte m = 0;
@@ -107,8 +108,8 @@ public class SteganographyUtil {
         }
         while (!(resI >= messageSize)) {
             byte val = (byte)((pixel >> ((remainingP - 1) *8))&MASKS_CLEAR[index]);
-            System.out.println("VAl: " + val);
-            System.out.println("Pixel: " + pixel);
+            //System.out.println("VAl: " + val);
+            //System.out.println("Pixel: " + pixel);
             m = (byte)(m | val);
             //temp = (byte)(temp & MASKS_CLEAR[index]);
             remainingP--;
@@ -123,7 +124,7 @@ public class SteganographyUtil {
                 remainingP = 3;
             }
             if (j+bits == 8){
-                System.out.println("Here");
+                //System.out.println("Here");
                 res[resI] = m;
                 resI++;
                 j = 0;
@@ -136,13 +137,13 @@ public class SteganographyUtil {
 
 
         }
-        System.out.println("Res: " + Arrays.toString(res));
+        //System.out.println("Res: " + Arrays.toString(res));
         File ff = new File(filename);
         try {
 
             OutputStream os = new FileOutputStream(ff);
             os.write(res);
-            System.out.println("Write bytes to file.");
+            //System.out.println("Write bytes to file.");
             os.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -152,8 +153,8 @@ public class SteganographyUtil {
     }
 
     private static boolean encryptImage(byte bits, byte[] message) {
-        System.out.println("This is the length: " + message.length);
-        System.out.println("This is array: " + Arrays.toString(message));
+        //System.out.println("This is the length: " + message.length);
+        //System.out.println("This is array: " + Arrays.toString(message));
         boolean done = false;
         int x = 1;
         int y = 0;
@@ -172,11 +173,11 @@ public class SteganographyUtil {
 
         byte mask = MASKS[index];
         int firstPixel = image.getRGB(0,0);
-        System.out.println("First Before: " + firstPixel);
+        //System.out.println("First Before: " + firstPixel);
         firstPixel = (firstPixel & (~(MASKS_CLEAR[1])));
         firstPixel |= index;
         image.setRGB(0,0, firstPixel);
-        System.out.println("First After: " + firstPixel);
+        //System.out.println("First After: " + firstPixel);
 
         int i = 0;
         byte b = message[i];
