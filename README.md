@@ -26,10 +26,12 @@ All the files are available in the repo.
 It is very hard to tell the difference between the original and 1 or 2-bit encoded image. The difference becomes easier to spot with 4-bit encoding, especially if we look at the sky.
 
 Original:
-![Original](example.png)
+
+![](example.png)
 
 4-bit encoding:
-![4-bit encoded](example_e_4.png)
+
+![](example_e_4.png)
 
 #### Hiding .png Files
 Hidden files do not have to be .txt or text-based files. For example, you can hide an image inside an image. 
