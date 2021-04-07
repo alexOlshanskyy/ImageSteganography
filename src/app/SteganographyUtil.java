@@ -73,11 +73,6 @@ public class SteganographyUtil {
         // get number of bits encoded per pixel
         bits = firstPixel & MASKS_CLEAR[1];
 
-        // bits has to be 0,1,2,3 according to encoding mapping (0 -> 1, 1 -> 2, 2 -> 4, 3 -> 8)
-        if (bits != 0 && bits != 1 && bits != 2 && bits != 3) {
-            return false;
-        }
-
         int index = bits;
         if (bits == 0) {
             bits = 1;

@@ -109,9 +109,9 @@ public class Main {
             mb = kb/1000;
         }
         if (mb != 0) {
-            System.out.println(String.format("Max message that can be encoded is: %.2f MB", mb));
+            System.out.printf("Max message that can be encoded is: %.2f MB%n", mb);
         } else {
-            System.out.println(String.format("Max message that can be encoded is: %.2f KB", kb));
+            System.out.printf("Max message that can be encoded is: %.2f KB%n", kb);
         }
 
 
