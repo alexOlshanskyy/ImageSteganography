@@ -5,7 +5,9 @@ This project hides one file with any extension into a png image. This is done by
 
 ### Technique 
 There are 3 8-bit fields in every rgb value, and they are store in an int like so:
-![Test](https://www.google.com/url?sa=i&url=https%3A%2F%2Ftwiserandom.com%2Fandroid%2Fgraphics%2Fcolor-in-android-a-tutorial%2Findex.html&psig=AOvVaw3_sYq5RzIggtcMQawfz3Kd&ust=1617915717628000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJiFq_GD7e8CFQAAAAAdAAAAABAD)
+
+![](intRBG.png)
+
 Alpha filed is not used. 
 So, if we are encoding 2 bits that means per pixel we can encode 6 bits (2 for r, 2 for g, 2 for b).
 The format for the header is that the first pixel always contains the 2-bit encoding representing how many bits were encoded in the image. The header contains the int value representing how many bytes are encoded so that when the image is being decoded algorithm knows when to stop.
@@ -17,8 +19,11 @@ In the repo there are a few examples of this at work:
 example.png was used to hide 4 different .txt files
 
 dexter.txt was hidden in example_e_1.png using 1-bit encoding.
+
 TheCallOfTheWind.txt was hidden in example_e_2.png using 2-bit encoding.
+
 Awakening.txt was hidden in example_e_4.png using 4-bit encoding.
+
 PaP.txt was hidden in example_e_8.png using 8-bit encoding.
 
 All the files are available in the repo.
@@ -34,12 +39,15 @@ Original:
 ![](example_e_4.png)
 
 #### Hiding .png Files
+
 Hidden files do not have to be .txt or text-based files. For example, you can hide an image inside an image. 
 
 4k_image.png was used to hide 3 different .png files.
 
 SamplePNGImage_3mbmb.png was hidden in 4k_e_1.png using 1-bit encoding.
+
 SamplePNGImage_5mbmb.png was hidden in 4k_e_2.png using 2-bit encoding.
+
 SamplePNGImage_10mbmb.png was hidden in 4k_e_4.png using 4-bit encoding.
 
 All the files are available in the repo.
