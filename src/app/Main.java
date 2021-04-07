@@ -1,7 +1,6 @@
 package app;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -130,7 +129,6 @@ public class Main {
                 System.out.println("Failed to load file");
                 continue;
             }
-            System.out.println(messageFile.length);
             if (messageFile.length >= (imageCapacity/8)) {
                 System.out.println("File too big");
                 continue;
