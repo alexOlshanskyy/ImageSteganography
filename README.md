@@ -6,7 +6,7 @@ This project hides one file with any extension into a png image. This is done by
 ### Technique 
 There are 3 8-bit fields in every rgb value, and they are store in an int like so:
 
-![](intRGB.png)
+![](intRGB.PNG)
 
 Alpha filed is not used. 
 So, if we are encoding 2 bits that means per pixel we can encode 6 bits (2 for r, 2 for g, 2 for b).
