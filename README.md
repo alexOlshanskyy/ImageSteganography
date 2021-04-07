@@ -8,9 +8,12 @@ There are 3 8-bit fields in every rgb value, and they are store in an int like s
 
 ![](intRGB.PNG)
 
-Alpha filed is not used. 
+Alpha filed is not used.
+
 So, if we are encoding 2 bits that means per pixel we can encode 6 bits (2 for r, 2 for g, 2 for b).
+
 The format for the header is that the first pixel always contains the 2-bit encoding representing how many bits were encoded in the image. The header contains the int value representing how many bytes are encoded so that when the image is being decoded algorithm knows when to stop.
+
 With this header design when decoding an encoded image there is no need to specify how many bits per pixel are encoded or how many total bytes are encoded.
 
 ### Examples
