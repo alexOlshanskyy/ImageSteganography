@@ -12,6 +12,7 @@ The format for the header is that the first pixel always contains the 2-bit enco
 With this header design when decoding an encoded image there is no need to specify how many bits per pixel are encoded or how many total bytes are encoded.
 
 ### Examples
+#### Hiding .txt Files
 In the repo there are a few examples of this at work:
 example.png was used to hide 4 different .txt files
 
@@ -24,6 +25,13 @@ All the files are available in the repo.
 
 It is very hard to tell the difference between the original and 1 or 2-bit encoded image. The difference becomes easier to spot with 4-bit encoding, especially if we look at the sky.
 
+Original:
+![Original](example.png)
+
+4-bit encoding:
+![4-bit encoded](example_e_4.png)
+
+#### Hiding .png Files
 Hidden files do not have to be .txt or text-based files. For example, you can hide an image inside an image. 
 
 4k_image.png was used to hide 3 different .png files.
