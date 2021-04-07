@@ -6,7 +6,7 @@ This project hides one file with any extension into a png image. This is done by
 ### Technique 
 There are 3 8-bit fields in every rgb value, and they are store in an int like so:
 
-![](intRBG.png)
+![](intRGB.png)
 
 Alpha filed is not used. 
 So, if we are encoding 2 bits that means per pixel we can encode 6 bits (2 for r, 2 for g, 2 for b).
@@ -54,9 +54,9 @@ All the files are available in the repo.
 
 Once again, it is very hard to tell the difference between the original and 1 or 2-bit encoded image. The difference becomes easier to spot with 4-bit encoding. 
 
-With 1-bit encoding the maximum possible change in one of the colors is about **0.4%**
-With 2-bit encoding the maximum possible change in one of the colors is about **1.2%**
-With 4-bit encoding the maximum possible change in one of the colors is about **5.9%**
+With 1-bit encoding the maximum possible change in one of the colors is about **0.4%**.
+With 2-bit encoding the maximum possible change in one of the colors is about **1.2%**.
+With 4-bit encoding the maximum possible change in one of the colors is about **5.9%**.
 
 As can be seen, for 1 and 2-bit encoding the changes are minor and very hard to notice, while the 4-bit encoding yields a significant possible change to the color.
 
