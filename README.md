@@ -19,6 +19,7 @@ With this header design when decoding an encoded image there is no need to speci
 ### Examples
 #### Hiding .txt Files
 In the repo there are a few examples of this at work:
+
 example.png was used to hide 4 different .txt files
 
 dexter.txt was hidden in example_e_1.png using 1-bit encoding.
@@ -58,7 +59,9 @@ All the files are available in the repo.
 Once again, it is very hard to tell the difference between the original and 1 or 2-bit encoded image. The difference becomes easier to spot with 4-bit encoding. 
 
 With 1-bit encoding the maximum possible change in one of the colors is about **0.4%**.
+
 With 2-bit encoding the maximum possible change in one of the colors is about **1.2%**.
+
 With 4-bit encoding the maximum possible change in one of the colors is about **5.9%**.
 
 As can be seen, for 1 and 2-bit encoding the changes are minor and very hard to notice, while the 4-bit encoding yields a significant possible change to the color.
