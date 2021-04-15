@@ -1,7 +1,7 @@
 # Image Steganography
 
 ### Description
-This project hides one file with any extension into a png image. This is done by encoding 1, 2, 4, or 8 bits from the file that needs to be hidden, into the lover 1, 2, 4 or 8 bits of each rgb value, respectively. 
+This project hides one file with any extension into a png image. This is done by encoding 1, 2, 4, or 8 bits from the file that needs to be hidden, into the lover 1, 2, 4 or 8 bits of each rgb pixel value, respectively. 
 
 ### Technique 
 There are 3, 8-bit fields in every rgb value, and they are store in an int like so (Image source: https://slideplayer.com/slide/14061668/):
